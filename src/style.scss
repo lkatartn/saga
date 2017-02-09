@@ -1,11 +1,34 @@
 .users {
+	margin: auto;
 	display: flex;
+	font-family: OpenSans, sans-serif;
+	font-size: 40px;
+	font-weight: 400;
 }
 
 .user {
-	padding: 10px;
+	padding: 10px 20px;
 	cursor: pointer;
-	.selected {
-		background-color: #AAA;
+	&.selected {
+		background-color: #AAC366;
 	}
+}
+.userdata {
+	font-size: 40px;
+	font-family: OpenSans, sans-serif;
+	&.loading {
+		background-color: #ccc;
+	}
+	border: 1px solid #AAC366;
+	.name {
+		padding: 10px 5px;
+	}
+	.age {
+		padding: 5px;
+	}
+}
+button {
+	font-size: 40px;
+	padding: 10px;
+	margin: 30px auto;
 }

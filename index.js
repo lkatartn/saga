@@ -1,6 +1,6 @@
 const app = require('express')();
 const WebSocket = require('ws');
-const db = require('./src/db');
+const db = require('./db');
 const wss = new WebSocket.Server({ port: 2322 });
 
 
@@ -15,8 +15,18 @@ wss.on('connection', function connection(ws) {
 });
 
 app.get('/users', function(req, res) {
-	// res.send('[{"id": 1, "name": "BOB"}]')
-	res.json([{id: 1, name: "BOB"}])
+	setTimeout(
+		() => res.json(db.users),
+		500
+	)
+})
+app.get('/user/:userId', function(req, res) {
+	const id = req.params.userId;
+	const userData = db.extendedData[id];
+	setTimeout(
+		() => res.json(userData),
+		id * 750
+	)
 })
 
 app.listen(2323);

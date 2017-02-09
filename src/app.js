@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import reducer from './reducers/index'
 import Root from './root.jsx';
 import rootSaga from './sagas';
+import wsSaga from './wsSaga';
 import './style.scss';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -23,9 +24,12 @@ const store = createStore(
 		),
 	),
 );
-sagaMiddleware.run(rootSaga);
-
-
+sagaMiddleware.run(function* (){
+	yield [
+		rootSaga(),
+		// wsSaga(),
+	]
+});
 
 ReactDOM.render(
 	(<Provider store={store}>

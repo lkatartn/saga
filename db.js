@@ -1,4 +1,4 @@
-module.export = {
+module.exports = {
 	users: [
 		{
 			id: 1,

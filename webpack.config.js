@@ -4,15 +4,19 @@ module.exports = {
     entry: {
         main: [
             'babel-polyfill',
-            'webpack-dev-server/client?http://localhost:8888', // WebpackDevServer host and port
+            'webpack-dev-server/client?http://localhost:4242', // WebpackDevServer host and port
             'webpack/hot/only-dev-server',
             './src/app.js'
         ]
     },
-    proxy: {
-        "/api/*": {
-            target: "http://localhost:2323",
-            pathRewrite: {"^/api" : ""}
+    devServer: {
+        proxy: {
+            "/api/*": {
+                target: "http://localhost:2323",
+                pathRewrite: {
+                    '/api': '',
+                }
+            }
         }
     },
     output: {
