@@ -1,0 +1,11 @@
+.users {
+	display: flex;
+}
+
+.user {
+	padding: 10px;
+	cursor: pointer;
+	.selected {
+		background-color: #AAA;
+	}
+}
